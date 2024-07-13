@@ -1,0 +1,4 @@
+com\redbean0721\essentialsx\Commands\essentials.class
+com\redbean0721\essentialsx\Utils\LogFilter.class
+com\redbean0721\essentialsx\EssentialsX.class
+com\redbean0721\essentialsx\Events\CommandEventHandler.class

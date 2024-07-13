@@ -1,0 +1,13 @@
+name: EssentialsX
+version: '1.0-SNAPSHOT'
+main: com.redbean0721.essentialsx.EssentialsX
+#author:
+api-version: '1.21'
+commands:
+  essentials:
+    description: A test command.
+    aliases:
+      - etx
+    usage: /<command> [args]
+#    permission: essentials.usage
+#    permission-message: You do not have permission to do that.
