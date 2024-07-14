@@ -1,5 +1,5 @@
 name: EssentialsX
-version: '1.0-SNAPSHOT'
+version: '1.0-Alpha'
 main: com.redbean0721.essentialsx.EssentialsX
 #author:
 api-version: '1.21'

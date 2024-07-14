@@ -1,4 +1,5 @@
 test/
+.env
 
 ### Java template
 # Compiled class file

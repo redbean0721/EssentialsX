@@ -6,7 +6,7 @@
 
     <groupId>com.redbean0721</groupId>
     <artifactId>EssentialsX</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-Alpha</version>
     <packaging>jar</packaging>
 
     <name>EssentialsX</name>
@@ -71,6 +71,11 @@
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
             <version>1.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 </project>

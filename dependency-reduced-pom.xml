@@ -4,7 +4,7 @@
   <groupId>com.redbean0721</groupId>
   <artifactId>EssentialsX</artifactId>
   <name>EssentialsX</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0-Alpha</version>
   <build>
     <resources>
       <resource>
